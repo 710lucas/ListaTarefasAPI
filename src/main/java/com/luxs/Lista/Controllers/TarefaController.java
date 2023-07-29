@@ -2,6 +2,7 @@ package com.luxs.Lista.Controllers;
 
 import com.luxs.Lista.Services.TarefaService;
 import com.luxs.Lista.TarefaDTO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,14 @@ import org.springframework.web.bind.annotation.*;
 public class TarefaController {
 
 
-    TarefaService tarefaService = new TarefaService();
+    private final TarefaService tarefaService;
+
+    @Autowired
+    public TarefaController(TarefaService t){
+        tarefaService = t;
+    }
+
+
 
     @GetMapping("/tarefas")
     public ResponseEntity<String> getTarefas(){
@@ -24,7 +32,7 @@ public class TarefaController {
 
     @PutMapping("/fez")
     public ResponseEntity<String> fezTarefa(@RequestBody TarefaDTO tarefa){
-        tarefaService.getTarefa(tarefa.getNumero()).setFeita(true);
+        tarefaService.setFeita(true, tarefa.getNumero());
         return ResponseEntity.status(200).body("Ok");
     }
     @PutMapping("/nao-fez")

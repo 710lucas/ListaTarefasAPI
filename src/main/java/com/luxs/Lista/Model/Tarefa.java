@@ -1,12 +1,28 @@
 package com.luxs.Lista.Model;
 
-public class Tarefa {
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
+
+@Entity
+@Table(name="TABLE_TAREFA")
+public class Tarefa implements Serializable {
+
+    public static long serialVersionUID = 1;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long ID;
 
     private boolean feita = false;
     private String nome;
     private String descricao;
     private int numero;
 
+    public Tarefa(){
+
+    }
 
     public Tarefa(String nome, String descricao){
         this.nome = nome;
@@ -43,6 +59,10 @@ public class Tarefa {
 
     public int getNumero(){
         return numero;
+    }
+
+    public long getID(){
+        return ID;
     }
 
 
