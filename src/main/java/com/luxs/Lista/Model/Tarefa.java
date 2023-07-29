@@ -47,6 +47,6 @@ public class Tarefa {
 
 
     public String toString(){
-        return "Nome: "+nome+"\nDescricao: "+descricao+"\nFeita: " + (isFeita() ? "sim" : "nao")+"\n";
+        return "Numero: "+numero+"\nNome: "+nome+"\nDescricao: "+descricao+"\nFeita: " + (isFeita() ? "sim" : "nao")+"\n";
     }
 }
